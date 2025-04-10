@@ -1,0 +1,131 @@
+/* GLOBAL RESET (keep if needed) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+}
+
+/* Custom navbar - bootstrap-proof */
+.navbar- {
+    all: initial;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #000;
+    color: white;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+}
+
+/* Logo */
+.logo- {
+    all: unset;
+    font-size: 1.5rem;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 30px;
+    cursor: pointer;
+}
+
+.logo-:hover {
+    color: #ffd700;
+}
+
+/* Nav wrapper layout */
+.nav-wrapper- {
+    display: flex;
+    align-items: center;
+}
+
+/* Hide the checkbox */
+#nav-toggle {
+    display: none;
+}
+
+/* Burger icon styles */
+.burger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.burger span {
+    height: 3px;
+    width: 25px;
+    background: white;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Navigation links (desktop) */
+.nav-link- {
+    display: flex;
+    list-style: none;
+    margin-top: 10px;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.nav-link- li {
+    display: inline-block;
+}
+
+.nav-link- a {
+    all: unset;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s;
+    padding: 0.5rem 0.75rem;
+    display: block;
+    font-size: 1rem;
+}
+
+.nav-link- a:hover {
+    color: #ffd700;
+}
+
+/* Responsive rules for small screens */
+@media (max-width: 768px) {
+    .burger {
+        display: flex;
+    }
+
+    .nav-wrapper- {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .nav-link- {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: #1e1e2f;
+        flex-direction: column;
+        width: 200px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        padding: 0;
+    }
+
+    #nav-toggle:checked~.nav-link- {
+        max-height: 500px;
+        padding: 1rem 0;
+    }
+
+    .nav-link- li {
+        padding: 0.75rem 1rem;
+    }
+}
