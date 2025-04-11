@@ -6,6 +6,7 @@ import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
 import Home from './Pages/Home/Home';
 import Species from './Pages/Species/Species';
+import Habitats from './Pages/Habitats/Habitats';
 
 
 
@@ -16,11 +17,11 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/zoologix/species" element={<Species />} />
-        {/*
+        <Route path="/zoologix/habitats" element={<Habitats />} />
 
+        {/*
         <Route path="/zoologix/create" element={<Create />} />
         <Route path="/zoologix/delete" element={<Delete />} />
-        <Route path="/zoologix/habitats" element={<Habitats />} />
         <Route path="/zoologix/sub-collection" element={<SubCollection />} />
         <Route path="/zoologix/the-sports-db" element={<TheSportsDB />} />
       */}
