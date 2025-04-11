@@ -7,7 +7,7 @@ import Footer from './Components/Footer';
 import Home from './Pages/Home/Home';
 import Species from './Pages/Species/Species';
 import Habitats from './Pages/Habitats/Habitats';
-
+import './index.css';
 
 
 const App = () => {

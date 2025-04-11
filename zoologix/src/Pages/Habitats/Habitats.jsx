@@ -116,7 +116,7 @@ function Habitats() {
     return (
         <div className="container-">
             <div className="full-width-header">
-                <h4>/zoologix/habitats</h4>
+                <h4>/species-api/habitats</h4>
             </div>
 
             <form onSubmit={handleSearchSubmit} className="search-form">
@@ -173,7 +173,11 @@ function Habitats() {
                         </tr>
                     </thead>
                     <tbody>
-                        {habitatsList.map((s, i) => (
+                        {habitatsList.length === 0 ? (
+                            <tr>
+                                <td colSpan="7" className="not-found">No habitats found.</td>
+                            </tr>
+                        ) : habitatsList.map((s, i) => (
                             <tr key={i}>
                                 <td>{s.habitat_id}</td>
                                 <td>{s.name}</td>

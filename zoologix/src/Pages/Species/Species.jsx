@@ -117,7 +117,7 @@ const Species = () => {
     return (
         <div className="container-">
             <div className="full-width-header">
-                <h4>/zoologix/species</h4>
+                <h4>/species-api/species</h4>
             </div>
 
             <form onSubmit={handleSearchSubmit} className="search-form">
@@ -173,7 +173,11 @@ const Species = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {speciesList.map((s, i) => (
+                        {speciesList.length === 0 ? (
+                            <tr>
+                                <td colSpan="21" className="not-found">No species found</td>
+                            </tr>
+                        ) : speciesList.map((s, i) => (
                             <tr key={i}>
                                 <td>{s.species_id}</td>
                                 <td>{s.common_name}</td>
@@ -199,7 +203,7 @@ const Species = () => {
                                 <td>{s.genus}</td>
                                 <td>{s.status_code}</td>
                             </tr>
-                        ))}
+                        ))} 
                     </tbody>
                 </table>
             </div>

@@ -6,7 +6,6 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
 }
 
 .container- {
@@ -110,4 +109,11 @@ input[type="text"]:focus {
 
 #pagination {
     z-index: 0;
+}
+
+.not-found {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #555;
 }
