@@ -19,7 +19,7 @@ const Navbar = () => {
                     <li><Link to="/zoologix/species">Species</Link></li>
                     <li><Link to="/zoologix/habitats">Habitats</Link></li>
                     <li><Link to="/zoologix/sub-collection">Sub-Collection</Link></li>
-                    <li><Link to="/zoologix/the-sports-db">TheSportsDB</Link></li>
+                    <li><Link to="/zoologix/the-sport-db">TheSportsDB</Link></li>
                     <li><Link to="/zoologix/create">Create</Link></li>
                     <li><Link to="/zoologix/delete">Delete</Link></li>
                 </ul>

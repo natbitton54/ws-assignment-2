@@ -7,6 +7,7 @@ import Footer from './Components/Footer';
 import Home from './Pages/Home/Home';
 import Species from './Pages/Species/Species';
 import Habitats from './Pages/Habitats/Habitats';
+import TheSportsDB from './Pages/SportsDB/TheSportsDB';
 import './index.css';
 
 
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/zoologix/species" element={<Species />} />
         <Route path="/zoologix/habitats" element={<Habitats />} />
+        <Route path="/zoologix/the-sport-db" element={<TheSportsDB />} />
 
         {/*
         <Route path="/zoologix/create" element={<Create />} />

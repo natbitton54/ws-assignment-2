@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container- {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+}
+
+.full-width-header {
+    background-color: #aaa;
+    padding-bottom: 20px;
+    width: 100%;
+}
+
+.container- h4 {
+    margin-top: 80px;
+    margin-left: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 96%;
+    margin: 20px auto;
+    margin-top: 20px;
+}
+
+.fetch-sports {
+    text-decoration: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.fetch-sports:hover {
+    color: #4285f4;
+    text-decoration: underline;
+}
+
+.search-box {
+    position: relative;
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+input[type="text"] {
+    flex-grow: 1;
+    padding: 8px 40px 8px 20px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.icon {
+    position: absolute;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    outline: none;
+    padding: 0 12px;
+    color: #5f6368;
+}
+
+.clear-btn {
+    right: 48px;
+    visibility: hidden;
+}
+
+.search-btn {
+    right: 10px;
+}
+
+input[type="text"]:focus+.clear-btn,
+input[type="text"]:not(:placeholder-shown)+.clear-btn {
+    visibility: visible;
+}
+
+.filter-dropdown select {
+    margin-left: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px 25px;
+    font-size: 16px;
+}
+
+input[type="text"]:focus {
+    border-color: #4285f4;
+    box-shadow: 0 0 8px rgba(66, 133, 244, 0.5);
+}
+
+.filter-dropdown {
+    width: 25%;
+}
+
+.filter-dropdown select {
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+}
+
+.table-responsive {
+    width: 98%;
+    margin: 0 auto;
+}
+
+#pagination {
+    z-index: 0;
+}
+
+.not-found {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #555;
+}
