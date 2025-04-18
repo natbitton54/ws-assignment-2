@@ -1,10 +1,12 @@
 import Swal from 'sweetalert2';
 
 /**
- * @author `Nat Bitton`
+ * 
  * Custom error class to handle detailed error information.
  * Includes an HTTP status code and any additional details
  * from the server's response (if available).
+ * 
+ * @author `NatBitton54`
  */
 
 export class CustomError extends Error {
@@ -22,9 +24,11 @@ export class CustomError extends Error {
 }
 
 /**
- * @author `Nat Bitton`
+ * 
  * A wrapper class for making HTTP requests using the Fetch API.
  * Applies default settings if they are not provided in the `options`.
+ * 
+ * @author `NatBitton54`
  */
 export class FetchWrapper {
     constructor(baseURL) {
@@ -86,46 +90,5 @@ export class FetchWrapper {
 
     delete(uri, headers = {}) {
         return this.sendRequest(uri, { method: 'DELETE', headers });
-    }
-}
-
-/**
- * Loads the navbar from nav.html, inserts the CSS file if needed,
- * and places the resulting HTML in a specified placeholder.
- *
- * By using a ROOT_PATH constant, we can avoid confusing relative paths
- * across different subfolders or pages.
- * @author `Nat Bitton`
- * @param {string} placeholderId - The ID of the element where nav.html should be injected.
- */
-
-const ROOT_PATH = '/ws-assignment2/';
-
-export async function loadNavbar(placeholderId) {
-    const navbarEl = document.getElementById(placeholderId);
-    if (!navbarEl) {
-        console.error(`Element with ID '${placeholderId}' not found.`);
-        return;
-    }
-
-    try {
-        const navUrl = `${ROOT_PATH}/html/nav.html`;
-        const response = await fetch(navUrl);
-
-        if (!response.ok) {
-            throw new CustomError(
-                `Failed to load navbar: ${response.statusText}`,
-                response.status
-            );
-        }
-
-        const html = await response.text();
-        navbarEl.innerHTML = html;
-    } catch (error) {
-        throw new CustomError(
-            `Failed to load navbar: ${error.message}`,
-            error.statusCode,
-            error.details
-        );
     }
 }

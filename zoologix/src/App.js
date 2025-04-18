@@ -8,8 +8,8 @@ import Home from './Pages/Home/Home';
 import Species from './Pages/Species/Species';
 import Habitats from './Pages/Habitats/Habitats';
 import TheSportsDB from './Pages/SportsDB/TheSportsDB';
+import SubCollection from './Pages/SubCollection/SubCollection';
 import './index.css';
-
 
 const App = () => {
   return (
@@ -20,12 +20,10 @@ const App = () => {
         <Route path="/zoologix/species" element={<Species />} />
         <Route path="/zoologix/habitats" element={<Habitats />} />
         <Route path="/zoologix/the-sport-db" element={<TheSportsDB />} />
-
+        <Route path="/zoologix/sub-collection" element={<SubCollection />} />
         {/*
         <Route path="/zoologix/create" element={<Create />} />
         <Route path="/zoologix/delete" element={<Delete />} />
-        <Route path="/zoologix/sub-collection" element={<SubCollection />} />
-        <Route path="/zoologix/the-sports-db" element={<TheSportsDB />} />
       */}
       </Routes>
       <Footer />
