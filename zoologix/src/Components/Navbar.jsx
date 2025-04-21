@@ -2,6 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
+/**
+ * Navbar Component
+ *
+ * Renders a responsive navigation bar for navigating the Zoologix app.
+ * Includes a logo, a collapsible burger menu for smaller screens, and links to all major pages.
+ *
+ * @component
+ * @returns {JSX.Element} The navigation bar UI
+ * 
+ * @author `NatBitton54`
+ */
 const Navbar = () => {
     return (
         <nav className="navbar-">

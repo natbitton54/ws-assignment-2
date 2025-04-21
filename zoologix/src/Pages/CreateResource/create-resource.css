@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.contain-create {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.create-container {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    width: 40%;
+    padding: 20px;
+    background-color: #f5f7fa;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 80px;
+}
+
+.contain-create .full-width-header {
+    background-color: #aaa;
+    padding-bottom: 20px;
+    width: 100%;
+}
+
+.contain-create h4 {
+    margin-top: 80px;
+    margin-left: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+.form-select,
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.invalid {
+    border-color: red;
+}
+
+.error-text {
+    color: red;
+    font-size: 0.8rem;
+}
+
+.submit-btn {
+    width: 100%;
+    background-color: #3f51b5;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 20px;
+}
+
+.submit-btn:hover {
+    background-color: #303f9f;
+}
+
+select.form-select {
+    width: 100%;
+    padding: 8px 20px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    font-size: 16px;
+    line-height: 20px;
+    background-color: white;
+    appearance: none;
+}
+
+.invalid {
+    border-color: red !important;
+}
+
+@media screen and (max-width: 600px) {
+    .create-container {
+        padding: 10px;
+    }
+
+    .submit-btn {
+        padding: 10px;
+    }
+}

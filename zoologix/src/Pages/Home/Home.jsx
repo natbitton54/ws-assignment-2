@@ -2,6 +2,22 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
 
+/**
+ * Home component
+ *
+ * Serves as the landing page for Assignment 2's Web Services project.
+ * Provides navigation to all major features:
+ * - Viewing and filtering Species and Habitats
+ * - Interacting with nested resources (Sub-Collection)
+ * - Searching TheSportsDB API
+ * - Creating and deleting records
+ *
+ * @component
+ * @returns {JSX.Element} The home page layout with links to all feature routes.
+ * 
+ * @author `NatBitton54`
+ */
+
 const Home = () => {
     return (
         <>

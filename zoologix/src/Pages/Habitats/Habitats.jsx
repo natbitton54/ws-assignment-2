@@ -4,10 +4,22 @@ import Swal from 'sweetalert2'
 import { FetchWrapper, loadNavbar } from '../../utils/fetchWrapper'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import Pagination from '../../Components/Pagination'
-import Species from '../Species/Species'
 
 const api = new FetchWrapper('http://localhost/species-api');
 
+/**
+ * Habitats component
+ *
+ * Displays and manages a paginated, filterable list of habitats from the `/habitats` API.
+ * - Supports searching by name, climate, location, and description.
+ * - Implements pagination and page size selection.
+ * - Shows alerts on errors or no search results.
+ *
+ * @component
+ * @returns {JSX.Element} Rendered habitat list with filters, pagination, and fetch logic.
+ * 
+ * @author `NatBitton54`
+ */
 function Habitats() {
     const [habitatsList, setHabitatsList] = useState([]);
     const [searchName, setSearchName] = useState('');

@@ -6,6 +6,25 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 const api = new FetchWrapper('https://www.thesportsdb.com/api/v1/json/3');
 
+/**
+ * TheSportsDB component
+ *
+ * Allows users to search and fetch sports leagues based on country and sport using TheSportsDB API.
+ * - Supports searching via dropdown filters (`s` for sport, `c` for country)
+ * - Updates the URL with query params
+ * - Fetches and displays league data in a table
+ * - Alerts users for input validation, missing filters, and empty results
+ *
+ * Uses:
+ * - FetchWrapper for making API calls
+ * - SweetAlert2 for user feedback
+ * - React Router's `useNavigate` and `useLocation` for URL param handling
+ *
+ * @component
+ * @returns {JSX.Element} Sports league search and display UI
+ * 
+ * @author `NatBitton54`
+ */
 const TheSportsDB = () => {
     const [sportsList, setSportsList] = useState([]);
     const [searchName, setSearchName] = useState('');

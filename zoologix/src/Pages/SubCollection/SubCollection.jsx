@@ -7,6 +7,24 @@ import './sub-collection.css';
 
 const api = new FetchWrapper('http://localhost/species-api');
 
+/**
+ * SubCollection component
+ *
+ * Displays a paginated list of species filtered by selected habitat.
+ * - Loads all available habitat IDs for dropdown selection.
+ * - Fetches species records belonging to the selected habitat.
+ * - Supports pagination and page size adjustments.
+ *
+ * Uses:
+ * - FetchWrapper for API requests
+ * - SweetAlert2 for user-friendly error alerts
+ * - Pagination component for navigation
+ *
+ * @component
+ * @returns {JSX.Element} A UI for selecting a habitat and viewing associated species.
+ * 
+ * @author `NatBitton54`
+ */
 function SubCollection() {
   const [habitatsId, setHabitatsId] = useState([]);
   const [selectedHabitatId, setSelectedHabitatId] = useState('');

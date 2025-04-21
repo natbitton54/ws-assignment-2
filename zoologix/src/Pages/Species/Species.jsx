@@ -7,6 +7,22 @@ import Pagination from '../../Components/Pagination';
 
 const api = new FetchWrapper('http://localhost/species-api');
 
+/**
+ * Species component
+ *
+ * Displays a paginated and filterable list of species from the `/species-api/species` endpoint.
+ * - Supports filtering by name, description, diet, genus, class, and order.
+ * - Allows search queries to be submitted and clears them as needed.
+ * - Updates the URL with query parameters for deep linking or browser navigation.
+ * - Uses SweetAlert2 for friendly error/info feedback and Bootstrap for styling.
+ *
+ * Pagination is handled using a separate Pagination component, and page size can be changed.
+ * 
+ * @component
+ * @returns {JSX.Element} A searchable, paginated table of species data.
+ * 
+ * @author `NatBitton54`
+ */
 const Species = () => {
     const [speciesList, setSpeciesList] = useState([]);
     const [searchName, setSearchName] = useState('');
