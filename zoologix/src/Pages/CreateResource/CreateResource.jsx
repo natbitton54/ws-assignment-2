@@ -53,10 +53,26 @@ const CreateResource = () => {
 
   const fields = resourceType === 'habitat' ? habitatFields : speciesFields;
 
+  /**
+   * useEffect - Fetch dropdown data when resource type is 'species'
+  */
   useEffect(() => {
     if (resourceType === 'species') fetchDropdownData();
   }, [resourceType]);
 
+  /**
+   * fetchDropdownData
+   *
+   * Fetches all foreign key dropdown values for species form:
+   * - Diet IDs
+   * - Habitat IDs
+   * - Classification IDs
+   *
+   * @async
+   * @function
+   * @returns {Promise<void>}
+   * @author `NatBitton54`
+   */
   const fetchDropdownData = async () => {
     try {
       const fetchAllIds = async (endpoint) => {
@@ -88,6 +104,15 @@ const CreateResource = () => {
     }
   };
 
+  /**
+   * handleInputChange
+   *
+   * Updates the formData state based on user input.
+   * Applies formatting rules to specific fields.
+   *
+   * @param {React.ChangeEvent<HTMLInputElement | HTMLSelectElement>} e
+   * @author `NatBitton54`
+   */
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     let processedValue = value;
@@ -102,6 +127,16 @@ const CreateResource = () => {
     setErrors({ ...errors, [name]: '' });
   };
 
+  /**
+   * validate
+   *
+   * Validates the current form data based on field-specific rules.
+   * Updates error messages if any field is invalid.
+   *
+   * @function
+   * @returns {boolean} True if all fields are valid; false otherwise.
+   * @author `NatBitton54`
+   */
   const validate = () => {
     const newErrors = {};
     fields.forEach(({ name }) => {
@@ -169,6 +204,17 @@ const CreateResource = () => {
     return Object.keys(newErrors).length === 0;
   };
 
+  /**
+   * handleSubmit
+   *
+   * Handles form submission:
+   * - Validates input.
+   * - Sends a POST request to the API with form data.
+   * - Displays success or error alerts using SweetAlert.
+   *
+   * @param {React.FormEvent<HTMLFormElement>} e
+   *  @author `NatBitton54`
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) return;

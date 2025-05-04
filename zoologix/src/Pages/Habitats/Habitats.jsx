@@ -31,6 +31,12 @@ function Habitats() {
     const navigate = useNavigate();
     const location = useLocation();
 
+    /**
+     * useEffect - Initializes state from URL query parameters on component load or URL change.
+     *
+     * Extracts values for page, pageSize, name, and filter from the URL and sets the corresponding state.
+     * Then triggers habitat data loading with those values.
+     */
     useEffect(() => {
         const params = new URLSearchParams(location.search);
         const queryPage = parseInt(params.get('page')) || 1;
@@ -46,6 +52,10 @@ function Habitats() {
         loadHabitats(queryPage, querySize, queryName, queryFilter);
     }, [location.search]);
 
+    /**
+     * useEffect - Dynamically loads Bootstrap CSS into the document head.
+     * Removes it on component unmount.
+     */
     useEffect(() => {
         const link = document.createElement('link');
         link.rel = 'stylesheet';
@@ -54,6 +64,16 @@ function Habitats() {
         return () => document.head.removeChild(link);
     }, []);
 
+    /**
+     * loadHabitats
+     * 
+     * Fetches habitats from the API based on pagination and optional filter/search values.
+     *
+     * @param {number} pageToLoad - Current page to fetch.
+     * @param {number} size - Number of results per page.
+     * @param {string} name - Search term (optional).
+     * @param {string} filterBy - Field to filter by (optional).
+     */
     const loadHabitats = async (pageToLoad = page, size = pageSize, name = searchName, filterBy = filter) => {
         try {
             let endPoint = `/habitats?page=${pageToLoad}&pageSize=${size}`;
@@ -77,6 +97,15 @@ function Habitats() {
         }
     }
 
+    /**
+     * updateURL
+     *
+     * Updates the browser's URL with the given parameters.
+     * Useful for preserving navigation and enabling deep linking.
+     *
+     * @param {Object} paramObj - Object containing filter, name, page, and pageSize.
+     * @author `NatBitton54`
+     */
     const updateURL = (paramObj) => {
         const params = new URLSearchParams();
 
@@ -90,6 +119,15 @@ function Habitats() {
     };
 
 
+    /**
+   * handleSearchSubmit
+   *
+   * Handles form submission for searching habitats.
+   * Validates input, updates the URL, and triggers a new fetch.
+   *
+   * @param {Event} e - Form submission event.
+   * @author `NatBitton54`
+   */
     const handleSearchSubmit = async (e) => {
         e.preventDefault();
 
@@ -105,7 +143,14 @@ function Habitats() {
 
         updateURL({ name: searchName, filter: filter, page: 1, pageSize: pageSize });
     }
-
+    
+    /**
+     * handleClearSearch
+     *
+     * Clears all search and filter inputs, resets pagination,
+     * and fetches the full unfiltered dataset.
+     * @author `NatBitton54`
+     */
     const handleClearSearch = () => {
         setSearchName('');
         setFilter('');
@@ -114,11 +159,27 @@ function Habitats() {
         Swal.fire('Cleared', 'Search reset. Displaying all habitats.', 'success');
     }
 
+    /**
+     * handlePageChange
+     *
+     * Updates the page and triggers data reloading for the selected page.
+     *
+     * @param {number} newPage - The new page number.
+     * @author `NatBitton54`
+     */
     const handlePageChange = (newPage) => {
         setPage(newPage);
         updateURL({ name: searchName, filter, page: newPage, pageSize });
     };
 
+    /**
+     * handlePageSizeChange
+     *
+     * Updates the number of items per page and resets to the first page.
+     *
+     * @param {number} newPageSize - The new page size to apply.
+     * @author `NatBitton54`
+     */
     const handlePageSizeChange = (newPageSize) => {
         setPageSize(newPageSize);
         setPage(1);

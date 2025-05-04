@@ -36,6 +36,13 @@ function SubCollection() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  /**
+   * On component mount or URL change:
+   * - Fetch all habitat IDs.
+   * - If URL has habitat, page, or pageSize, trigger a filtered data load.
+   *
+   * @returns {void}
+   */
   useEffect(() => {
     fetchHabitatsId();
     const params = new URLSearchParams(location.search);
@@ -49,6 +56,14 @@ function SubCollection() {
     }
   }, [location.search]);
 
+  /**
+   * Fetches all habitat IDs across paginated API responses and sets them to state.
+   *
+   * @async
+   * @function
+   * @returns {Promise<void>}
+   * @author `NatBitton54`
+   */
   const fetchHabitatsId = async () => {
     try {
       let allData = [];
@@ -69,6 +84,17 @@ function SubCollection() {
     }
   }
 
+  /**
+  * Loads species data for a specific habitat ID with optional pagination parameters.
+  *
+  * @async
+  * @function
+  * @param {string} habitatId - The habitat ID to filter by.
+  * @param {number} [pg=page] - The page number to fetch.
+  * @param {number} [size=pageSize] - The number of records per page.
+  * @returns {Promise<void>}
+  * @author `NatBitton54`
+  */
   const loadSubCollection = async (habitatId, pg = page, size = pageSize) => {
     try {
       const endPoint = `/habitats/${habitatId}/species?page=${pg}&pageSize=${size}`;
@@ -84,6 +110,14 @@ function SubCollection() {
     }
   }
 
+  /**
+ * Handles habitat ID dropdown changes and triggers a fresh species fetch.
+ *
+ * @function
+ * @param {React.ChangeEvent<HTMLSelectElement>} e - Change event from select input.
+ * @returns {void}
+ * @author `NatBitton54`
+ */
   const handleHabitatChange = (e) => {
     const habitatId = e.target.value;
     setSelectedHabitatId(habitatId);
@@ -94,11 +128,27 @@ function SubCollection() {
     }
   }
 
+  /**
+  * Handles pagination page change triggered from Pagination component.
+  *
+  * @function
+  * @param {number} newPage - The page number to navigate to.
+  * @returns {void}
+  * @author `NatBitton54`
+  */
   const handlePageChange = (newPage) => {
     setPage(newPage);
     loadSubCollection(selectedHabitatId, newPage, pageSize);
   };
 
+  /**
+  * Handles user changing the page size and resets to page 1.
+  *
+  * @function
+  * @param {number} newSize - New number of items to show per page.
+  * @returns {void}
+  * @author `NatBitton54`
+  */
   const handlePageSizeChange = (newSize) => {
     setPageSize(newSize);
     setPage(1);

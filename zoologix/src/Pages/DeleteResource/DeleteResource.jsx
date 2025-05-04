@@ -23,10 +23,27 @@ function DeleteResource() {
   const [resourceId, setResourceId] = useState([]);
   const [selectedId, setSelectedId] = useState('');
 
+  /**
+ * useEffect - Triggers ID fetch when the selected resource type changes.
+ *
+ * React hook that runs `fetchIds` every time `resourceType` updates.
+ */
   useEffect(() => {
     fetchIds();
   }, [resourceType]);
 
+  /**
+ * fetchIds
+ *
+ * Fetches all available resource IDs for the selected resource type (habitats or species).
+ * Handles paginated data and stores all IDs in state.
+ * Resets the currently selected ID afterward.
+ *
+ * @async
+ * @function
+ * @returns {Promise<void>}
+ * @author `NatBitton54`
+ */
   const fetchIds = async () => {
     try {
       let allIds = [];
@@ -54,11 +71,32 @@ function DeleteResource() {
     }
   };
 
+  /**
+  * isValidIdFormat
+  *
+  * Checks if the provided ID matches the expected format based on resource type.
+  *
+  * @function
+  * @param {string} id - The ID to validate.
+  * @returns {boolean} `true` if the ID matches the format (HA-### or SP-###), `false` otherwise.
+  * @author `NatBitton54`
+  */
   const isValidIdFormat = (id) => {
     const pattern = resourceType === 'habitats' ? /^HA-\d{3}$/ : /^SP-\d{3}$/;
     return pattern.test(id);
   };
 
+  /**
+   * handleDelete
+   *
+   * Validates selected ID and prompts the user for confirmation before deletion.
+   * Sends DELETE request to the API and shows an alert on success or failure.
+   *
+   * @async
+   * @function
+   * @returns {Promise<void>}
+   * @author `NatBitton54`
+   */
   const handleDelete = async () => {
     if (!selectedId) {
       return Swal.fire('Error', 'Please select an ID to delete.', 'warning');

@@ -34,7 +34,17 @@ const Species = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    // Read from query params on load
+    /**
+    * useEffect hook that runs when the URL query parameters change.
+    *
+    * - Extracts `page`, `pageSize`, `name`, and `filter` from the URL.
+    * - Updates corresponding state variables.
+    * - Triggers data fetching (`loadSpecies`) using extracted values.
+    *
+    * Dependencies:
+    * - Triggers only when `location.search` changes.
+    * 
+    */
     useEffect(() => {
         const params = new URLSearchParams(location.search);
         const queryPage = parseInt(params.get('page')) || 1;
@@ -58,6 +68,18 @@ const Species = () => {
         return () => document.head.removeChild(link);
     }, []);
 
+    /**
+     * Loads species data from the API based on pagination and filter options.
+     *
+     * @async
+     * @function
+     * @param {number} [pageToLoad=page] - The page number to fetch.
+     * @param {number} [size=pageSize] - The number of records per page.
+     * @param {string} [name=searchName] - The value to search/filter by.
+     * @param {string} [filterBy=filter] - The field to apply the filter on.
+     * @returns {Promise<void>}
+     * @author `NatBitton54`
+     */
     const loadSpecies = async (pageToLoad = page, size = pageSize, name = searchName, filterBy = filter) => {
         try {
             let endpoint = `/species?page=${pageToLoad}&pageSize=${size}`;
@@ -85,6 +107,17 @@ const Species = () => {
     };
 
 
+    /**
+     * Updates the browser's URL with the given query parameters.
+     *
+     * @function
+     * @param {Object} paramsObj - Parameters to include in the query string.
+     * @param {string} [paramsObj.name] - Search term.
+     * @param {string} [paramsObj.filter] - Filter type.
+     * @param {number} paramsObj.page - Current page.
+     * @param {number} paramsObj.pageSize - Number of items per page.
+     * @author `NatBitton54`
+     */
     const updateURL = (paramsObj) => {
         const params = new URLSearchParams();
 
@@ -96,6 +129,15 @@ const Species = () => {
         navigate(`?${params.toString()}`);
     };
 
+    /**
+     * Handles form submission for filtering/searching species.
+     *
+     * @async
+     * @function
+     * @param {React.FormEvent<HTMLFormElement>} e - The form submit event.
+     * @returns {Promise<void>}
+     * @author `NatBitton54`
+     */
     const handleSearchSubmit = async (e) => {
         e.preventDefault();
 
@@ -111,6 +153,12 @@ const Species = () => {
         updateURL({ name: searchName, filter, page: 1, pageSize });
     };
 
+    /**
+     * Clears the current search input and filter, resets pagination, and updates the URL.
+     *
+     * @function
+     * @author `NatBitton54`
+     */
     const handleClear = () => {
         setSearchName('');
         setFilter('');
@@ -119,11 +167,25 @@ const Species = () => {
         Swal.fire('Cleared', 'Search reset. Displaying all species.', 'success');
     };
 
+    /**
+     * Handles pagination changes triggered by the Pagination component.
+     *
+     * @function
+     * @param {number} newPage - New page number selected by the user.
+     * @author `NatBitton54`
+     */
     const handlePageChange = (newPage) => {
         setPage(newPage);
         updateURL({ name: searchName, filter, page: newPage, pageSize });
     };
 
+    /**
+     * Handles the change in page size and resets page to 1.
+     *
+     * @function
+     * @param {number} newSize - New page size selected by the user.
+     * @author `NatBitton54`
+     */
     const handlePageSizeChange = (newSize) => {
         setPageSize(newSize);
         setPage(1);
