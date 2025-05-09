@@ -12,7 +12,8 @@ body {
 
 /* HERO SECTION */
 .hero {
-    background: url("https://www.clicdata.com/wp-content/uploads/2018/10/blog-api-webhooks-webservices-explained.png") center/cover no-repeat;
+    background: url("https://spreadsheetweb.com/wp-content/uploads/2018/08/Utilizing-Web-Services-in-Excel-using-Formulas-1080x675.jpg") no-repeat center center/cover;
+    margin-top: 60px;
     background-color: #2b2b2b;
     min-height: 60vh;
     display: flex;
